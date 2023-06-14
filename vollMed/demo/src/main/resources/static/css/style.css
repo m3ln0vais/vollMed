@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    font-family: 'Public Sans', sans-serif;
+}
+
+.text1 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #0B3B60;
+}
+
+.text2 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #161717;
+}
+
+.text3 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+}
+
+.text4 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.text5 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.text6 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    color: #0B3B60;
+}
+
+.bgCard {
+    background-color: #0B3B60 !important;
+    color: #FFFFFF;
+}
+
+.borderBlue {
+    border-color: #0B3B60;
+    color: #0B3B60;
+}
+
+.btnBlue {
+    background-color: #0B3B60 !important;
+    color: #FFFFFF;
+}

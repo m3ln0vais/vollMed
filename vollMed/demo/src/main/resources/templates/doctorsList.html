@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head th:replace="~{fragments/imports :: head('Médicos')}"></head>
+
+<body>
+    <nav class="navbar bgCard py-3">
+        <div class="container px-4">
+            <a class="text-decoration-none text-white" th:href="@{/main}">
+                <i class="fa-solid fa-chevron-left fa-xl"></i>
+            </a>
+            <p class="text4 m-0">Médicos(as)</p>
+            <i class="fa-solid fa-ellipsis-vertical fa-xl"></i>
+        </div>
+    </nav>
+
+    <div class="container px-4">
+        <div class="row py-4">
+            <div class="col-12">
+                <input class="form-control py-3 rounded-2 border border-secondary" type="search" placeholder="Pesquisar"
+                    aria-label="Search">
+            </div>
+        </div>
+
+        <div class="row border-bottom" id="infoMedico" data-bs-toggle="collapse" href="#collapseExample" role="button"
+            aria-expanded="false" aria-controls="collapseExample">
+            <div class="col-10">
+                <div class="row">
+                    <div class="col-12">
+                        <p class="mb-1"><a class="text2 text-decoration-none">
+                                Brenda de Almeida</a></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <p class="text5 text-muted"><span>Ginecologista</span> | CRM<span>15.875-SP</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2 d-flex align-items-center justify-content-center">
+                <i class="fa-solid fa-caret-down"></i>
+                <i class="fa-solid fa-caret-up d-none"></i>
+            </div>
+
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body text5 text-muted border-0 p-0 pb-2">
+                    <div class="row">
+                        <div class="col-12"><span>brenda.almeida@med.com.br</span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12"><span>(51) 99999-8888</span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <span>Av. das Graças Altas, 633 - Curitiba/PR CEP: 66.777-100</span>
+                        </div>
+                    </div>
+                    <div class="row pt-3">
+                        <div class="col-6 d-grid">
+                            <button type="button"
+                                class="btn btn-outline-primary borderBlue rounded-2 text2">Editar</button>
+                        </div>
+                        <div class="col-6 d-grid">
+                            <button type="button" class="btn btn-outline-primary borderBlue rounded-2 text2">Desativar
+                                perfil</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fixed-bottom">
+            <div class="card shadow">
+                <div class="card-body d-grid">
+                    <a class="btn btn-primary btnBlue text1 rounded-2 py-2" th:href="@{/medicos/form}">
+                        Cadastrar novo perfil
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="~{fragments/imports :: scripts}"></div>
+
+    <script>
+        $(() => {
+            $('#infoMedico').click(function () {
+                console.log('ok');
+                $('fa-caret-up').removeClass('d-none')
+                $('fa-caret-down').addClass('d-none')
+            })
+        })
+    </script>
+</body>
+
+</html>

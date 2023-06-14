@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head th:replace="~{fragments/imports :: head('Pag Principal')}"></head>
+
+<body>
+    <div class="container px-4">
+        <p class="py-4 text1">Gerenciando sua clínica</p>
+        <p class="text2">Escolha qual seção deseja iniciar:</p>
+
+        <a class="text-decoration-none" th:href="@{/medicos}">
+            <div class="card bgCard rounded-3">
+                <div class="card-body py-4">
+                    <div class="text-center fs-1 py-2">
+                        <i class="fa-solid fa-user-doctor fa-2xl"></i>
+                    </div>
+                    <p class="text3 m-0 pt-1">Médicos(as)</p>
+                </div>
+            </div>
+        </a>
+
+        <div class="card bgCard rounded-3 my-3">
+            <div class="card-body py-4">
+                <div class="text-center fs-1 py-2">
+                    <i class="fa-solid fa-user fa-2xl"></i>
+                </div>
+                <p class="text3 m-0 pt-1">Pacientes</p>
+            </div>
+        </div>
+
+        <div class="card bgCard rounded-3 my-3">
+            <div class="card-body py-4">
+                <div class="text-center fs-1 py-2">
+                    <i class="fa-solid fa-calendar-days fa-2xl"></i>
+                </div>
+                <p class="text3 m-0 pt-1">Pacientes</p>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="~{fragments/imports :: scripts}"></div>
+</body>
+
+</html>
