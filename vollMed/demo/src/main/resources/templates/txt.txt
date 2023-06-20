@@ -1,0 +1,118 @@
+
+<div class="form-floating mb-3">
+    <input type="text" class="form-control border border-secondary" id="nome" placeholder="Nome completo"
+        th:field="*{nome}" th:classappend="${#fields.hasErrors('nome')}? 'is-invalid'">
+    <label for="floatingInput">Nome completo</label>
+    <div class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+</div>
+<div class="row mb-3">
+    <!-- <div class="col-6">
+        <select class="form-select py-2 border border-secondary" aria-label="Default select example">
+            <option selected>Especialidade</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+    </div> -->
+    <div class="col-6">
+        <div class="form-floating">
+            <input type="text" class="form-control border border-secondary" id="crm" placeholder="CRM"
+                th:field="*{crm}" th:classappend="${#fields.hasErrors('crm')}? 'is-invalid'">
+            <label for="floatingInput">CRM</label>
+            <div class="text-danger" th:if="${#fields.hasErrors('crm')}" th:errors="*{crm}"></div>
+        </div>
+    </div>
+</div>
+
+<!--contatos-->
+<div class="pb-2">
+    <span class="text6">Contatos</span>
+</div>
+<div class="form-floating mb-3">
+    <input type="email" class="form-control border border-secondary" id="email" placeholder="Email"
+        th:field="*{email}" th:classappend="${#fields.hasErrors('email')}? 'is-invalid'">
+    <label for="floatingInput">Email</label>
+    <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+</div>
+<div class="form-floating mb-3">
+    <input type="text" class="form-control border border-secondary" id="tel" placeholder="Celular"
+        th:field="*{telefone}" th:classappend="${#fields.hasErrors('telefone')}? 'is-invalid'">
+    <label for="floatingInput">Celular</label>
+    <div class="text-danger" th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"></div>
+</div>
+
+<!--endereço profissional-->
+<div class="pb-2">
+    <span class="text6">Endereço profissional</span>
+</div>
+<div class="form-floating mb-3">
+    <input type="text" class="form-control border border-secondary" id="rua" placeholder="Endereço"
+        th:field="*{address.logradouro}"
+        th:classappend="${#fields.hasErrors('address.logradouro')}? 'is-invalid'">
+    <label for="floatingInput">Endereço</label>
+    <div class="text-danger" th:if="${#fields.hasErrors('address.logradouro')}"
+        th:errors="*{address.logradouro}"></div>
+</div>
+<div class="row">
+    <div class="col-3 pe-0">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control border border-secondary" id="n" placeholder="N°"
+                th:field="*{address.numero}"
+                th:classappend="${#fields.hasErrors('address.numero')}? 'is-invalid'">
+            <label for="floatingInput">N°</label>
+            <div class="text-danger" th:if="${#fields.hasErrors('address.numero')}"
+                th:errors="*{address.numero}"></div>
+        </div>
+    </div>
+    <div class="col-9">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control border border-secondary" id="comple"
+                placeholder="Complemento" th:field="*{address.complemento}"
+                th:classappend="${#fields.hasErrors('address.complemento')}? 'is-invalid'">
+            <label for="floatingInput">Complemento</label>
+            <div class="text-danger" th:if="${#fields.hasErrors('address.complemento')}"
+                th:errors="*{address.complemento}"></div>
+        </div>
+    </div>
+</div>
+<div class="form-floating mb-3">
+    <input type="text" class="form-control border border-secondary" id="cid" placeholder="Cidade"
+        th:field="*{address.cidade}" th:classappend="${#fields.hasErrors('address.cidade')}? 'is-invalid'">
+    <label for="floatingInput">Cidade</label>
+    <div class="text-danger" th:if="${#fields.hasErrors('address.cidade')}" th:errors="*{address.cidade}">
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control border border-secondary" id="uf" placeholder="UF"
+                th:field="*{address.uf}" th:classappend="${#fields.hasErrors('address.uf')}? 'is-invalid'">
+            <label for="floatingInput">UF</label>
+            <div class="text-danger" th:if="${#fields.hasErrors('address.uf')}" th:errors="*{address.uf}">
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control border border-secondary" id="cep" placeholder="CEP"
+                th:field="*{address.cep}"
+                th:classappend="${#fields.hasErrors('address.cep')}? 'is-invalid'">
+            <label for="floatingInput">CEP</label>
+            <div class="text-danger" th:if="${#fields.hasErrors('address.cep')}" th:errors="*{address.cep}">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="fixed-bottom">
+    <div class="card shadow">
+        <div class="card-body d-grid gap-2">
+            <a class="btn btn-primary btnBlue text1 rounded-2 py-2 disabled" href="/novoMedico.html">
+                Cadastrar novo perfil
+            </a>
+            <a class="btn btn-outline-primary borderBlue text1 rounded-2 py-2" th:href="@{/medicos}">
+                Cancelar
+            </a>
+        </div>
+    </div>
+</div>

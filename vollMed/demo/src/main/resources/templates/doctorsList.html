@@ -1,7 +1,7 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{fragments/imports :: head('Médicos')}"></head>
+<head th:replace="~{fragments/imports :: head('Lista de Médicos')}"></head>
 
 <body>
     <nav class="navbar bgCard py-3">
@@ -15,82 +15,148 @@
     </nav>
 
     <div class="container px-4">
-        <div class="row py-4">
+        <div class="row py-2">
             <div class="col-12">
                 <input class="form-control py-3 rounded-2 border border-secondary" type="search" placeholder="Pesquisar"
                     aria-label="Search">
             </div>
         </div>
 
-        <div class="row border-bottom" id="infoMedico" data-bs-toggle="collapse" href="#collapseExample" role="button"
-            aria-expanded="false" aria-controls="collapseExample">
-            <div class="col-10">
+        <div class="row text-center">
+            <div class="col-md-6">
+                <span class="text-muted" style="font-size: 15px !important;"
+                    th:text="${page.totalElements + ' Profissionais Cadastrados'}">x
+                    Registros</span>
+            </div>
+            <!-- <div class="col-md-6 py-3">
+                <ul replace="~{fragments/pagination::p(${page}, '/employee')}"></ul>
+            </div> -->
+        </div>
+
+        <div class="py-2 text-center">
+            <span th:if="${page.empty}">nenhuma informação encontrada</span>
+        </div>
+
+        <div class="row border-bottom mb-3" th:unless="${page.empty}" th:each="p: ${page.content}" id="infoMedico"
+            role="button">
+            <div class="col-12">
                 <div class="row">
                     <div class="col-12">
-                        <p class="mb-1"><a class="text2 text-decoration-none">
+                        <p class="mb-1"><a class="text2 text-decoration-none" th:text="${p.name}">
                                 Brenda de Almeida</a></p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12">
-                        <p class="text5 text-muted"><span>Ginecologista</span> | CRM<span>15.875-SP</span></p>
+                    <div class="col-8">
+                        <p class="text5 text-muted"><span th:text="${p.speciality}">Ginecologista</span> | CRM: <span
+                                th:text="${p.crm}">15.875-SP</span></p>
+                    </div>
+                    <div class="col-4 pb-1">
+                        <div class="btn-group">
+                            <a th:href="${'/medicos/form?id=' + p.id}"
+                                class="btn btn-outline-warning borderBlue text2"><i class="fa fa-pencil"></i></a>
+
+                            <!-- Button trigger modal -->
+                            <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                class="btn btn-outline-danger borderBlue text2 rounded-end"><i class="fa fa-trash"></i>
+                            </a>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="d-flex justify-content-center pb-2">
+                                                <div
+                                                    class="d-flex justify-content-center align-items-center text-center iconDel">
+                                                    <i class="fa-regular fa-user fa-2xl"></i>
+                                                </div>
+                                            </div>
+                                            <div class="text-center">
+                                                <p class="text7">Deseja desativar este perfil?</p>
+                                            </div>
+
+                                            <span>
+                                                Ao desativar este perfil, suas informações ficarão desabilitadas
+                                                para pesquisas e futuros agendamentos.
+
+                                                Certifique-se que não há consultas agendadas, caso tenha, a
+                                                desativação não poderá ser concluída.
+                                            </span>
+                                        </div>
+                                        <div class="modal-footer btn-group">
+                                            <button type="button"
+                                                class="btn btn-outline-primary borderBlue text1 rounded-2"
+                                                data-bs-dismiss="modal">Cancelar</button>
+                                            <a type="button" class="btn btn-primary btnBlue text1 rounded-2"
+                                                th:href="@{/medicos/delete(id=${p.id})}">Excluir</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <a th:href="@{/medicos/delete(id=${p.id})}"
+                                class="btn btn-outline-danger borderBlue text2"><i class="fa fa-trash"></i></a>
+                        </div> -->
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-2 d-flex align-items-center justify-content-center">
-                <i class="fa-solid fa-caret-down"></i>
-                <i class="fa-solid fa-caret-up d-none"></i>
-            </div>
 
-            <div class="collapse" id="collapseExample">
-                <div class="card card-body text5 text-muted border-0 p-0 pb-2">
+                <!--th:id="${#ids.seq('collapseExample')}"-->
+                <!-- <div class="collapse" id="collapseExample">
+                <div class="card card-body text5 text-muted border-0 p-0 pb-2 idDinamico">
                     <div class="row">
-                        <div class="col-12"><span>brenda.almeida@med.com.br</span></div>
+                        <div class="col-12"><span th:text="${p.email}">brenda.almeida@med.com.br</span></div>
                     </div>
                     <div class="row">
-                        <div class="col-12"><span>(51) 99999-8888</span></div>
+                        <div class="col-12"><span th:text="${p.telefone}">(51) 99999-8888</span></div>
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <span>Av. das Graças Altas, 633 - Curitiba/PR CEP: 66.777-100</span>
+                            <span th:text="${p.address.logradouro}">Av. das Graças Altas,</span>
+                            <span th:text="${p.address.numero}">633</span>
+                            <span>- <span th:text="${p.address.cidade}">Curitiba</span>/<span
+                                    th:text="${p.address.uf}">PR</span></span>
+
+                            <span>CEP: <span th:text="${p.address.cep}">66.777-100</span></span>
+
                         </div>
                     </div>
-                    <div class="row pt-3">
-                        <div class="col-6 d-grid">
-                            <button type="button"
-                                class="btn btn-outline-primary borderBlue rounded-2 text2">Editar</button>
-                        </div>
-                        <div class="col-6 d-grid">
-                            <button type="button" class="btn btn-outline-primary borderBlue rounded-2 text2">Desativar
-                                perfil</button>
-                        </div>
-                    </div>
+
                 </div>
+            </div> -->
             </div>
         </div>
 
-        <div class="fixed-bottom">
-            <div class="card shadow">
-                <div class="card-body d-grid">
-                    <a class="btn btn-primary btnBlue text1 rounded-2 py-2" th:href="@{/medicos/form}">
-                        Cadastrar novo perfil
-                    </a>
-                </div>
-            </div>
+        <div class="d-grid">
+            <a class="btn btn-primary btnBlue text1 rounded-2 py-2" th:href="@{/medicos/form}">
+                Cadastrar novo perfil
+            </a>
         </div>
-    </div>
 
-    <div th:replace="~{fragments/imports :: scripts}"></div>
+        <div th:replace="~{fragments/imports :: scripts}"></div>
 
-    <script>
-        $(() => {
-            $('#infoMedico').click(function () {
+        <script>
+            $(() => {
+                // var id = 0
+                $('#infoMedico').click(function () {
+                    console.log('ok');
+                    $('fa-caret-up').removeClass('d-none')
+                    $('fa-caret-down').addClass('d-none')
+                })
+
                 console.log('ok');
-                $('fa-caret-up').removeClass('d-none')
-                $('fa-caret-down').addClass('d-none')
+                $('#infoMedico').change(() => {
+                })
+
+                $(".hrefDinamico").printElement()
+
+                // $('#infoMedico').each(() => {
+                //     $('.collapse').attr('id', 'collapseExample${id}')
+                // })
             })
-        })
-    </script>
+        </script>
+    </div>
 </body>
 
 </html>

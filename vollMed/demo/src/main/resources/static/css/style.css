@@ -54,6 +54,14 @@
     color: #0B3B60;
 }
 
+.text7 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: #0B3B60;
+}
+
 .bgCard {
     background-color: #0B3B60 !important;
     color: #FFFFFF;
@@ -64,7 +72,21 @@
     color: #0B3B60;
 }
 
+.borderBlue:hover,
+.borderBlue:focus {
+    background-color: #0B3B60 !important;
+    color: #FFFFFF;
+}
+
 .btnBlue {
     background-color: #0B3B60 !important;
     color: #FFFFFF;
+}
+
+.iconDel {
+    font-size: 2rem;
+    background-color: #0B3B60 !important;
+    color: #FFFFFF;
+    width: 6rem;
+    height: 6rem;
 }
